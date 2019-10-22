@@ -1,9 +1,13 @@
 {
   "name": "minimal-react-webpack-babel-setup",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "author": "Juliane Nagao <julianens@gmail.com> (http://junagao.com)",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
   "devDependencies": {
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",

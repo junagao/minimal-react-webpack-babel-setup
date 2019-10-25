@@ -1,8 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATH_SOURCE = path.join(__dirname, 'src');
 const PATH_DIST = path.join(__dirname, 'dist');
+
+const hotLoadingPlugin = new webpack.HotModuleReplacementPlugin();
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: path.join(PATH_SOURCE, 'index.html'),
@@ -32,6 +35,7 @@ module.exports = {
   devServer: {
     contentBase: PATH_DIST,
     historyApiFallback: true,
+    hot: true,
   },
-  plugins: [htmlPlugin],
+  plugins: [hotLoadingPlugin, htmlPlugin],
 };

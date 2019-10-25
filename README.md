@@ -7,6 +7,7 @@ This is a minimal setup for a React project running with Webpack and Babel for a
 - React 16
 - Webpack 4
 - Babel 7
+- Hot Module Replacement
 
 ## 🚀 Quick start
 

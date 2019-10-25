@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PATH_SOURCE = path.join(__dirname, 'src');
 const PATH_DIST = path.join(__dirname, 'dist');
@@ -12,6 +13,8 @@ const htmlPlugin = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: false,
 });
+
+const cleanWebpackPlugin = new CleanWebpackPlugin();
 
 module.exports = {
   entry: path.join(PATH_SOURCE, 'index.js'),
@@ -29,7 +32,7 @@ module.exports = {
   },
   output: {
     path: PATH_DIST,
-    filename: 'bundle.js',
+    filename: 'build.js',
     publicPath: '/',
   },
   devServer: {
@@ -37,5 +40,5 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
   },
-  plugins: [hotLoadingPlugin, htmlPlugin],
+  plugins: [hotLoadingPlugin, htmlPlugin, cleanWebpackPlugin],
 };

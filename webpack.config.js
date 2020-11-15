@@ -1,23 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const PATH_SOURCE = path.join(__dirname, 'src');
-const PATH_DIST = path.join(__dirname, 'dist');
-
-const hotLoadingPlugin = new webpack.HotModuleReplacementPlugin();
-
-const htmlPlugin = new HtmlWebpackPlugin({
-  template: path.join(PATH_SOURCE, 'index.html'),
-  filename: 'index.html',
-  inject: false,
-});
-
-const cleanWebpackPlugin = new CleanWebpackPlugin();
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
-  entry: path.join(PATH_SOURCE, 'index.js'),
+  entry: path.resolve(__dirname, './src/index.js'),
   module: {
     rules: [
       {
@@ -31,14 +18,21 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: PATH_DIST,
+    path: path.resolve(__dirname, './dist'),
     filename: 'build.js',
     publicPath: '/',
   },
   devServer: {
-    contentBase: PATH_DIST,
+    contentBase: path.resolve(__dirname, './dist'),
     historyApiFallback: true,
     hot: true,
+    publicPath: '/',
   },
-  plugins: [hotLoadingPlugin, htmlPlugin, cleanWebpackPlugin],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join('./src', 'index.html'),
+      filename: 'index.html',
+    }),
+  new CleanWebpackPlugin()],
 };

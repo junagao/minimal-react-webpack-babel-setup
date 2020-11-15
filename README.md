@@ -4,8 +4,8 @@ This is a minimal setup for a React project running with Webpack and Babel for a
 
 ## 🧐 What's inside?
 
-- React 16
-- Webpack 4
+- React 17
+- Webpack 5
 - Babel 7
 - Hot Module Replacement
 
@@ -14,7 +14,7 @@ This is a minimal setup for a React project running with Webpack and Babel for a
 1. Download the project and cd into it:
 
    ```bash
-   git clone git@github.com:junagao/minimal-react-webpack-babel-setup.git
+   git clone https://github.com/junagao/minimal-react-webpack-babel-setup.git
    cd minimal-react-webpack-babel-setup
    ```
 
